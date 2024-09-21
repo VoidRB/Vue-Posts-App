@@ -1,4 +1,7 @@
-<!-- <script setup>
+<script setup>
+import { useToast } from 'vue-toastification';
+
+const toast = useToast();
 import axios from 'axios';
 import { onMounted, reactive } from 'vue';
 
@@ -19,12 +22,13 @@ const state = reactive({
 });
 
 state.postSwitcher = 1;
+state.postTitle = '';
+state.postContent = 'Pick a Post from the list on the left to view and delete';
 
 onMounted(async () => {
   try {
-    const response = await axios.get('/api/posts/predelete/' + props.id);
-    state.posts = response.data;
-    console.log(state.posts);
+    // const preDeleteRes = await axios.get('/api/posts/viewposts/' + props.id);
+    state.posts = preDeleteRes.data;
   } catch (error) {
     throw error;
   }
@@ -59,7 +63,7 @@ async function deletePost(postid) {
         >
           {{ post.title }}</button
         ><button
-          @click="deletePost(post.id)"
+          @click="deletePost(post.id), toast('Deleted Post')"
           class="border-b-2 p-1 w-1/2 border-black active:shadow-inner active:shadow-black"
         >
           Delete
@@ -67,6 +71,6 @@ async function deletePost(postid) {
       </div>
     </section>
   </div>
-</template> -->
+</template>
 
-<template>WIP BECAUSE OF SOME WEIRD REQUEST CONFLICT</template>
+<!-- <template>WIP BECAUSE OF SOME WEIRD  CONFLICT</template> -->

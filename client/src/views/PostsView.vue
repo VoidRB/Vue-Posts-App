@@ -13,6 +13,7 @@ const state = reactive({
   threeButtons: {
     pressed: Number,
   },
+  posts: {},
 });
 
 onMounted(async () => {

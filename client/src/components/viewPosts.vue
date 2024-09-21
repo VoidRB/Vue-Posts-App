@@ -19,7 +19,9 @@ const state = reactive({
 });
 
 state.postSwitcher = 1;
-
+state.postTitle = '';
+state.postContent =
+  'Go and write a post OR Pick one from the List on the right';
 onMounted(async () => {
   try {
     const response = await axios.get('/api/posts/viewposts/' + props.id);
@@ -32,7 +34,9 @@ onMounted(async () => {
 
 <template>
   <div class="m-2 max-w-full flex flex-row">
-    <section class="w-4/5 min-h-full p-1 border-2 flex-col flex border-black">
+    <section
+      class="w-4/5 h-96 p-1 border-2 flex-col flex border-black focus:p-2 transition-all focus:shadow-2xl"
+    >
       <h1 class="underline">
         {{ state.postTitle }}
       </h1>
@@ -48,7 +52,7 @@ onMounted(async () => {
               (state.postTitle = post.title),
               (state.postContent = post.content)
           "
-          class="border-b-2 p-1 w-full border-black focus:shadow-inner focus:shadow-black"
+          class="border-b-2 p-2 w-full text-nowrap border-black focus:shadow-inner focus:shadow-black transition-all"
         >
           {{ post.title }}
         </button>
