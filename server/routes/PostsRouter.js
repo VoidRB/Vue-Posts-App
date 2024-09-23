@@ -38,6 +38,8 @@ router.post('/addpost/:id', (req, res) => {
 });
 
 router.get('/viewposts/:id', viewposts);
+router.get('/predelete/:id', viewposts);
+
 router.delete('/deletepost/:postid', deletePosts);
 
 export default router;

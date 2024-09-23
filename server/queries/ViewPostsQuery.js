@@ -15,7 +15,7 @@ const viewposts = (req, res) => {
     if (err) {
       throw err;
     }
-    console.log('Data fetched successfully');
+    console.log('Viewing Posts');
 
     res.send(result.rows);
   });

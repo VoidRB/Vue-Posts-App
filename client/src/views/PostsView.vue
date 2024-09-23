@@ -16,8 +16,8 @@ const state = reactive({
   posts: {},
 });
 
+state.threeButtons.pressed = 1;
 onMounted(async () => {
-  state.threeButtons.pressed = 1;
   try {
     const response = await axios.get('/api/posts/');
     state.message.id = response.data.id;

@@ -27,8 +27,9 @@ state.postContent = 'Pick a Post from the list on the left to view and delete';
 
 onMounted(async () => {
   try {
-    // const preDeleteRes = await axios.get('/api/posts/viewposts/' + props.id);
+    const preDeleteRes = await axios.get('/api/posts/predelete/' + props.id);
     state.posts = preDeleteRes.data;
+    console.log(state.props);
   } catch (error) {
     throw error;
   }
@@ -43,7 +44,9 @@ async function deletePost(postid) {
 
 <template>
   <div class="m-2 max-w-full flex flex-row-reverse">
-    <section class="w-4/5 min-h-full p-1 border-2 flex-col flex border-black">
+    <section
+      class="w-4/5 h-96 p-1 border-2 flex-col flex border-black focus:p-2 transition-all focus:shadow-2xl"
+    >
       <h1 class="underline">
         {{ state.postTitle }}
       </h1>
@@ -59,15 +62,14 @@ async function deletePost(postid) {
               (state.postTitle = post.title),
               (state.postContent = post.content)
           "
-          class="border-b-2 p-1 w-1/2 border-black focus:shadow-inner focus:shadow-black"
+          class="border-b-2 border-r-2 p-1 w-3/4 border-black focus:shadow-inner focus:shadow-black"
         >
-          {{ post.title }}</button
-        ><button
-          @click="deletePost(post.id), toast('Deleted Post')"
-          class="border-b-2 p-1 w-1/2 border-black active:shadow-inner active:shadow-black"
-        >
-          Delete
+          {{ post.title }}
         </button>
+        <button
+          @click="deletePost(post.id), toast('Deleted Post'), vm.$forceUpdate()"
+          class="pi pi-trash border-b-2 w-1/4 border-black active:shadow-inner active:shadow-black"
+        ></button>
       </div>
     </section>
   </div>

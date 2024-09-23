@@ -1,3 +1,4 @@
+import 'primeicons/primeicons.css';
 import './assets/main.css';
 import Toast from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
