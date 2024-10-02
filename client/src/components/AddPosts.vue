@@ -1,5 +1,5 @@
 <script setup>
-import { useToast } from 'vue-toastification';
+import { useToast } from "vue-toastification";
 
 const toast = useToast();
 defineProps({
@@ -10,13 +10,13 @@ defineProps({
 <template>
   <div class="m-2 h-full max-w-full">
     <form
-      class="items-start justify-evenly flex flex-col h-full"
+      class="flex h-full flex-col items-center justify-evenly"
       :action="'/api/posts/addpost/' + id"
       method="post"
     >
       <label>Title</label>
       <input
-        class="p-1 min-w-full border-2 border-black focus:p-2 transition-all focus:shadow-2xl"
+        class="min-w-full border-2 border-black p-1 transition-all focus:p-2 focus:shadow-2xl"
         type="text"
         name="title"
         required
@@ -24,14 +24,14 @@ defineProps({
       />
       <label>Content</label>
       <textarea
-        class="p-1 resize-none w-full h-96 focus:p-2 transition-all focus:shadow-2xl border-2 border-black"
+        class="h-96 w-full resize-none border-2 border-black p-2 transition-all focus:shadow-2xl"
         name="Content"
         id="Content"
         type="text"
         required
       ></textarea>
       <button
-        class="p-2 pr-4 pl-4 mb-11 border-t-0 border-2 border-black active:shadow-inner active:shadow-black"
+        class="mb-11 border-2 border-t-0 border-black p-2 pl-4 pr-4 active:shadow-inner active:shadow-black"
         type="submit"
         @click="toast('Added Post')"
       >

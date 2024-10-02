@@ -52,7 +52,7 @@ onMounted(async () => {
               (state.postTitle = post.title),
               (state.postContent = post.content)
           "
-          class="border-b-2 p-2 w-full text-nowrap border-black focus:shadow-inner focus:shadow-black transition-all"
+          class="border-b-2 truncate p-2 w-full text-nowrap border-black focus:shadow-inner focus:shadow-black transition-all"
         >
           {{ post.title }}
         </button>

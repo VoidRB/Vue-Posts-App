@@ -1,16 +1,21 @@
-<script setup></script>
+<script setup>
+import { useToast } from "vue-toastification";
+
+const toast = useToast();
+</script>
 
 <template>
   <form
-    class="flex flex-col items-center mt-40"
+    class="mt-40 flex flex-col items-center"
     action="/api/register"
     method="post"
+    autocomplete="off"
   >
-    <h1 class="text-3xl mb-5">Register form</h1>
-    <hr class="border-1 mb-5 border-black w-1/2" />
+    <h1 class="mb-5 text-3xl">Register form</h1>
+    <hr class="border-1 mb-5 w-1/2 border-black" />
     <label for="username">Username</label>
     <input
-      class="p-1 border-2 border-black focus:p-2 transition-all focus:shadow-2xl"
+      class="border-2 border-black p-1 transition-all focus:p-2 focus:shadow-2xl"
       type="username"
       name="RegUsername"
       id="RegUsername"
@@ -19,14 +24,14 @@
     />
     <label for="password">Password</label>
     <input
-      class="p-1 border-2 border-black focus:p-2 transition-all focus:shadow-2xl"
+      class="border-2 border-black p-1 transition-all focus:p-2 focus:shadow-2xl"
       type="password"
       name="RegPassword"
       id="RegPassword"
       required
     />
     <button
-      class="m-4 p-2 pr-4 pl-4 border-2 shadow-lg border-black active:shadow-inner active:shadow-black"
+      class="m-4 border-2 border-black p-2 pl-4 pr-4 shadow-lg active:shadow-inner active:shadow-black"
       type="submit"
     >
       Register

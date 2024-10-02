@@ -1,10 +1,9 @@
-<script></script>
-
 <template>
   <form
     class="flex flex-col items-center mt-40"
     action="/api/login"
     method="post"
+    autocomplete="off"
   >
     <h1 class="text-3xl mb-5">Login form</h1>
     <hr class="border-1 mb-5 border-black w-1/2" />
