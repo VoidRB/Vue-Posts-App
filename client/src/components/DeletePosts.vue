@@ -29,7 +29,6 @@ onMounted(async () => {
   try {
     const preDeleteRes = await axios.get("/api/posts/predelete/" + props.id);
     state.posts = preDeleteRes.data;
-    console.log(state.props);
   } catch (error) {
     throw error;
   }
@@ -37,8 +36,12 @@ onMounted(async () => {
 
 async function deletePost(postid) {
   try {
+    state.posts.pop(postid);
     await axios.delete("/api/posts/deletepost/" + postid);
-  } catch (error) {}
+    console.log(posts);
+  } catch (error) {
+    throw error;
+  }
 }
 </script>
 
@@ -67,14 +70,10 @@ async function deletePost(postid) {
           {{ post.title }}
         </button>
         <button
-          @click="
-            deletePost(post.id), toast('Deleted Post'), this.$forceUpdate()
-          "
+          @click="deletePost(post.id), toast('Deleted Post')"
           class="pi pi-trash w-1/4 border-b-2 border-black active:shadow-inner active:shadow-black"
         ></button>
       </div>
     </section>
   </div>
 </template>
-
-<!-- <template>WIP BECAUSE OF SOME WEIRD  CONFLICT</template> -->
